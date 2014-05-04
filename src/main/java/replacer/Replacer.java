@@ -1,15 +1,33 @@
 package replacer;
 
+import io.PropertyHandler;
+
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Replacer
 {
     private static String text = "";
 
-    public void replace()
+    /**
+     * Method responsible for running replacements on given text.
+     * It also reads all rules and stores them in memory.
+     * @param textToBeReplaced
+     * @return
+     */
+    public String replace(String textToBeReplaced)
     {
         ExpressionsReader er = new ExpressionsReader();
-//        text = st.getContent();
+        PropertyHandler props = new PropertyHandler("/config/default.properties");
+        String path = props.getPropertyValue("RegexRulesFilePath");
+        try {
+            er.loadExpressions(path);
+        } catch (CorruptedRulesFileException e) {
+            e.printStackTrace();
+            Logger.getAnonymousLogger().log(Level.SEVERE, "Rules loading error. No replacement done.");
+        }
+        text = textToBeReplaced;
         LinkedList<Expression> expressions = er.getExpressions();
         for (Expression ex : expressions)
         {
@@ -26,8 +44,7 @@ public class Replacer
                 text = text.replaceAll(ex.getMatcher(), replacement);
             }
         }
-//        st.setContent(text);
-        return;
+        return text;
     }
 
     private String format(String replacement)
