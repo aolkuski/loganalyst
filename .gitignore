@@ -1,0 +1,15 @@
+/target
+.classpath
+.project
+/bin
+/target
+/.idea
+._bin*
+/.settings
+careersection-functional-tests.iml
+/doc
+*.html
+.idea/*
+/.idea/*
+src/test/java/tries/*
+*.eml
