@@ -1,11 +1,6 @@
 package datastructures;
 
-import io.PropertyHandler;
-
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.TreeSet;
 
 /**
@@ -15,29 +10,33 @@ public class Log {
 
     private TreeSet<LogLine> log = new TreeSet<LogLine>();
 
-
-//    @Override
-//    String toString(){
-//
-//    }
+    public boolean addLogLine(LogLine logLine) {
+        int sizeBeforeAdding = log.size();
+        log.add(logLine);
+        if (log.size() > sizeBeforeAdding) {
+            return true;
+        }
+        return false;
+    }
 
     public void printLog() {
 
     }
 
-    public void writeLogToFile(Log log) throws FileNotFoundException {
-        PropertyHandler props = new PropertyHandler("config\\default.properties");
-        String outputFilePath = props.getPropertyValue("outputLogPath");
-        File outputFile = new File(outputFilePath);
-
-        if (outputFile.exists()) {
-            outputFile.delete();
-        }
-
-        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(outputFile, false));
-
-//        TODO: w zależności od metod Log'a, trzeba przez niego przejść i wyrzucić Stringa albo wziąć LOG'a jako stringa i zapisać do pliku.
-//        while()
-
+    public TreeSet<LogLine> getLogAsSet() {
+        return log;
     }
+
+    public ArrayList<LogLine> getLogAsArrayList() {
+        return new ArrayList<LogLine>(log);
+    }
+
+    @Override
+    public String toString() {
+
+
+        return "";
+    }
+
+
 }
