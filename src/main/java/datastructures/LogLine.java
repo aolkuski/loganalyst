@@ -31,10 +31,14 @@ import java.util.logging.Level;
  * X 	Time zone 	ISO 8601 time zone 	-08; -0800; -08:00
  */
 public class LogLine implements Comparable<LogLine> {
+
+    private final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss,SSS";
+
     private long date;
     private Level logLevel;
     private String content;
     private String additionalInfo;
+    private String loggerName;
 
     public String getAdditionalInfo() {
         return additionalInfo;
@@ -44,7 +48,13 @@ public class LogLine implements Comparable<LogLine> {
         this.additionalInfo = additionalInfo;
     }
 
-    private final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss,SSS";
+    public String getLoggerName() {
+        return loggerName;
+    }
+
+    public void setLoggerName(String loggerName) {
+        this.loggerName = loggerName;
+    }
 
     public String getContent() {
         return content;

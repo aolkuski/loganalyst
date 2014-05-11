@@ -1,9 +1,14 @@
 package io;
 
+import core.LogLineParser;
 import datastructures.Log;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 /**
@@ -11,20 +16,30 @@ import java.util.ArrayList;
  */
 public class LogReader {
 
-    public static Log read() throws FileNotFoundException {
-        if (!directoryExists()) {
+    private static LogLineParser parser = new LogLineParser("config\\default.config");
+
+    public static Log read() throws IOException {
+        PropertyHandler props = new PropertyHandler("config\\default.properties");
+        String inputLogDir = props.getPropertyValue("inputLogDir");
+        Log log = new Log();
+
+        if (!directoryExists(inputLogDir)) {
             throw new FileNotFoundException("Directory with files to merge not found.");
         }
 
-        Log log = new Log();
+        ArrayList<File> files = listFiles(inputLogDir);
+        for (File f : files) {
+            BufferedReader br = Files.newBufferedReader(f.toPath(), StandardCharsets.UTF_8);
+            for (String line = null; (line = br.readLine()) != null; ) {
+                log.addLogLine(parser.parseLine(line));
+            }
+        }
 
 
         return log;
     }
 
-    private static boolean directoryExists() {
-        PropertyHandler props = new PropertyHandler("config\\default.properties");
-        String inputLogDir = props.getPropertyValue("inputLogDir");
+    private static boolean directoryExists(String inputLogDir) {
 
         File outputDir = new File(inputLogDir);
 
@@ -49,7 +64,6 @@ public class LogReader {
             if (f.isFile() && (!f.isDirectory()) && f.exists() && (f.length() > Integer.valueOf(props.getPropertyValue("minimumFileLengthB")))) {
                 files.add(f);
             }
-
         }
 
         return files;
