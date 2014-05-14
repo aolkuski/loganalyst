@@ -1,5 +1,6 @@
 package io;
 
+import core.DateFormatException;
 import core.LogLineParser;
 import datastructures.Log;
 
@@ -16,9 +17,9 @@ import java.util.ArrayList;
  */
 public class LogReader {
 
-    private static LogLineParser parser = new LogLineParser("config\\default.config");
+    private static LogLineParser parser = new LogLineParser("config\\default.properties");
 
-    public static Log read() throws IOException {
+    public static Log read() throws IOException, DateFormatException {
         PropertyHandler props = new PropertyHandler("config\\default.properties");
         String inputLogDir = props.getPropertyValue("inputLogDir");
         Log log = new Log();
@@ -35,6 +36,10 @@ public class LogReader {
             }
         }
 
+
+        while (log.getLogAsSet().descendingSet().iterator().hasNext()) {
+            System.out.println(log.getLogAsSet().descendingSet().iterator().next());
+        }
 
         return log;
     }

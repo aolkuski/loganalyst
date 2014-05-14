@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Alex on 2014-05-11.
@@ -23,6 +24,7 @@ public class LogLineParser {
     private PropertyHandler props;
     private String commonDateFormatsFilePath;
     private ArrayList<String> dateFormats;
+    private LogLine line;
 
     public LogLineParser(String propertyHandlerPath) {
         props = new PropertyHandler(propertyHandlerPath);
@@ -31,40 +33,79 @@ public class LogLineParser {
     }
 
 
-    public LogLine parseLine(String line) throws IOException {
-        LogLine logLine = new LogLine();
+    public LogLine parseLine(String logLine) throws IOException, DateFormatException {
+        line = new LogLine();
+        Integer dateFormatLength = 0;
+        Integer levelBeginPosition = 0;
 
-
-        return logLine;
-    }
-
-    public static Level parseLogLevel(String line) {
-        for (Field f : Level.class.getFields()) {
-            // TODO sprawdź czy to przypadkiem nie jest coś, co się będzie nadawało pod klasę Level i spełniało swoją funkcję. Zrób coś z resztą linijki...
+        // insert info about date to structure
+        if ((dateFormatLength = parseDate(logLine)) == null) {
+            throw new DateFormatException("No format date format specified in file is applicable to this line:\n" + logLine);
         }
+        ;
+        String logLineWithoutDate = logLine.substring(dateFormatLength).trim();
 
-        return Level.INFO;
+        if ((levelBeginPosition = parseLogLevel(logLineWithoutDate)) == null) {
+            Logger.getLogger("LogLineParser").info("No log level specified");
+            line.setContent(logLineWithoutDate);
+        } else {
+            if (levelBeginPosition == 0) {
+                // it means that there is nothing between date and logger level
+                line.setContent(logLineWithoutDate.substring(this.line.getLogLevel().getName().length() - 1).trim());
+            } else {
+                // parse additional info from between date and logger level
+                System.out.println(logLineWithoutDate);
+                System.out.println(levelBeginPosition);
+                line.setAdditionalInfo(logLineWithoutDate.substring(0, levelBeginPosition).trim());
+                line.setContent(logLineWithoutDate.substring(this.line.getLogLevel().getName().length() - 1 + levelBeginPosition).trim());
+            }
+        }
+        return line;
     }
 
-    private Long parseDate(String line) {
-        Long timeInMilis = null;
-        Date output = null;
+    public Integer parseLogLevel(String line) {
+        String loggerType = null;
+        int firstOccurence = line.length();
+        for (Field f : Level.class.getFields()) {
+            if (line.indexOf(f.getName()) <= firstOccurence && line.indexOf(f.getName()) > 0) {
+                loggerType = f.getName();
+                firstOccurence = line.indexOf(f.getName());
+            }
+        }
+        if (loggerType != null) {
+            try {
+                System.out.println(loggerType);
+                this.line.setLogLevel(Level.parse(loggerType.toUpperCase()));
+            } catch (IllegalArgumentException iae) {
+                return null;
+            }
+        }
+        if (firstOccurence == line.length()) {
+            return null;
+        }
+        return firstOccurence;
+    }
 
+    private Integer parseDate(String logLine) {
+        Date output = null;
         for (String dateFormat : dateFormats) {
             SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
             try {
-                output = sdf.parse(line.substring(0, dateFormat.length()));
+                output = sdf.parse(logLine.substring(0, dateFormat.length()));
+                line.setDate(output.getTime());
+                return dateFormat.length();
             } catch (ParseException pe) {
                 // Do nothing. Try again.
             }
         }
-
-        return output.getTime();
+        return null;
     }
+
 
     private ArrayList<String> getDateFormats() {
         BufferedReader br = null;
         try {
+            System.out.println(commonDateFormatsFilePath);
             br = Files.newBufferedReader(new File(commonDateFormatsFilePath).toPath(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();

@@ -38,7 +38,15 @@ public class LogLine implements Comparable<LogLine> {
     private Level logLevel;
     private String content;
     private String additionalInfo;
-    private String loggerName;
+    private String initialDateFormat;
+
+    public String getInitialDateFormat() {
+        return initialDateFormat;
+    }
+
+    public void setInitialDateFormat(String initialDateFormat) {
+        this.initialDateFormat = initialDateFormat;
+    }
 
     public String getAdditionalInfo() {
         return additionalInfo;
@@ -46,14 +54,6 @@ public class LogLine implements Comparable<LogLine> {
 
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
-    }
-
-    public String getLoggerName() {
-        return loggerName;
-    }
-
-    public void setLoggerName(String loggerName) {
-        this.loggerName = loggerName;
     }
 
     public String getContent() {
@@ -88,12 +88,14 @@ public class LogLine implements Comparable<LogLine> {
         } else if (this.getDate() < o.getDate()) {
             return -1;
         } else {
-            if (this.getLogLevel().intValue() - o.getLogLevel().intValue() != 0) {
-                return ((Integer) this.getLogLevel().intValue()).compareTo(o.getLogLevel().intValue());
+            if ((this.logLevel != null) && (o.getLogLevel() != null)) {
+                if (this.getLogLevel().intValue() - o.getLogLevel().intValue() != 0) {
+                    return ((Integer) this.getLogLevel().intValue()).compareTo(o.getLogLevel().intValue());
+                }
             }
-        }
 
-        return 0;
+            return 0;
+        }
     }
 
     @Override
