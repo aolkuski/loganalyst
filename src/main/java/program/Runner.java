@@ -1,7 +1,9 @@
 package program;
 
 import core.DateFormatException;
+import datastructures.Log;
 import io.LogReader;
+import io.LogWriter;
 
 import java.io.IOException;
 
@@ -13,8 +15,9 @@ public class Runner {
     public static void main(String... args) throws IOException, DateFormatException {
         System.out.println("Hello world!");
 
-        LogReader.read();
+        Log log = LogReader.read();
 
+        LogWriter.write(log);
 //        PropertyHandler props = new PropertyHandler("config\\default.properties");
 //        System.out.println(Level.parse("INFO"));
 

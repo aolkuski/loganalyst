@@ -25,6 +25,8 @@ public class LogLineParser {
     private String commonDateFormatsFilePath;
     private ArrayList<String> dateFormats;
     private LogLine line;
+    private static String defaultDateFormat = null;
+
 
     public LogLineParser(String propertyHandlerPath) {
         props = new PropertyHandler(propertyHandlerPath);
@@ -33,10 +35,12 @@ public class LogLineParser {
     }
 
 
-    public LogLine parseLine(String logLine) throws IOException, DateFormatException {
+    public LogLine parseLine(String logLine, int fileNumber, int origLineNumber) throws IOException, DateFormatException {
         line = new LogLine();
         Integer dateFormatLength = 0;
         Integer levelBeginPosition = 0;
+        line.setOrigLineNumber(origLineNumber);
+        line.setFileNumber(fileNumber);
 
         // insert info about date to structure
         if ((dateFormatLength = parseDate(logLine)) == null) {
@@ -51,11 +55,11 @@ public class LogLineParser {
         } else {
             if (levelBeginPosition == 0) {
                 // it means that there is nothing between date and logger level
-                line.setContent(logLineWithoutDate.substring(this.line.getLogLevel().toString().length() - 1).trim());
+                line.setContent(logLineWithoutDate.substring(this.line.getLogLevel().toString().length()).trim());
             } else {
                 // parse additional info from between date and logger level
                 line.setAdditionalInfo(logLineWithoutDate.substring(0, levelBeginPosition).trim());
-                line.setContent(logLineWithoutDate.substring(this.line.getLogLevel().toString().length() - 1 + levelBeginPosition).trim());
+                line.setContent(logLineWithoutDate.substring(this.line.getLogLevel().toString().length() + levelBeginPosition).trim());
             }
         }
         return line;
@@ -85,11 +89,25 @@ public class LogLineParser {
 
     private Integer parseDate(String logLine) {
         Date output = null;
+        SimpleDateFormat sdf = null;
+
+        if (defaultDateFormat != null) {
+            sdf = new SimpleDateFormat(defaultDateFormat);
+            try {
+                output = sdf.parse(logLine.substring(0, defaultDateFormat.length()));
+                line.setDate(output.getTime());
+                return defaultDateFormat.length();
+            } catch (ParseException pe) {
+                defaultDateFormat = null;
+            }
+        }
+
         for (String dateFormat : dateFormats) {
-            SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+            sdf = new SimpleDateFormat(dateFormat);
             try {
                 output = sdf.parse(logLine.substring(0, dateFormat.length()));
                 line.setDate(output.getTime());
+                defaultDateFormat = dateFormat;
                 return dateFormat.length();
             } catch (ParseException pe) {
                 // Do nothing. Try again.

@@ -41,6 +41,24 @@ public class LogLine implements Comparable<LogLine> {
     private String content;
     private String additionalInfo;
     private String initialDateFormat;
+    private Integer fileNumber;
+    private Integer origLineNumber;
+
+    public Integer getFileNumber() {
+        return fileNumber;
+    }
+
+    public void setFileNumber(Integer fileNumber) {
+        this.fileNumber = fileNumber;
+    }
+
+    public Integer getOrigLineNumber() {
+        return origLineNumber;
+    }
+
+    public void setOrigLineNumber(Integer origLineNumber) {
+        this.origLineNumber = origLineNumber;
+    }
 
     public String getInitialDateFormat() {
         return initialDateFormat;
@@ -84,15 +102,25 @@ public class LogLine implements Comparable<LogLine> {
 
     @Override
     public int compareTo(LogLine o) {
-        // comparison across
+        // comparison across dates
         if (this.getDate() > o.getDate()) {
             return 1;
         } else if (this.getDate() < o.getDate()) {
             return -1;
         } else {
+            // comparison across log lvels
             if ((this.logLevel != null) && (o.getLogLevel() != null)) {
                 if (this.getLogLevel().getSyslogEquivalent() - o.getLogLevel().getSyslogEquivalent() != 0) {
                     return ((Integer) this.getLogLevel().getSyslogEquivalent()).compareTo(o.getLogLevel().getSyslogEquivalent());
+                } else {
+                    // comaprison across file number
+                    if (this.getFileNumber() - o.getFileNumber() != 0) {
+                        return this.getFileNumber().compareTo(o.getFileNumber());
+                    } else {
+                        if (this.getOrigLineNumber() - o.getOrigLineNumber() != 0) {
+                            return this.getOrigLineNumber().compareTo(o.getOrigLineNumber());
+                        }
+                    }
                 }
             }
         }
@@ -110,7 +138,7 @@ public class LogLine implements Comparable<LogLine> {
             line += this.getAdditionalInfo().toString() + " ";
         }
         if (this.getLogLevel() != null) {
-            line += this.getLogLevel().toString();
+            line += this.getLogLevel().toString() + " ";
         }
         line += this.getContent();
         return line;

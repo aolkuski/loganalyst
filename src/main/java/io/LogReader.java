@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by Alex on 2014-05-07.
@@ -30,23 +29,18 @@ public class LogReader {
         }
 
         ArrayList<File> files = listFiles(inputLogDir);
-        int ctr = 0;
-        for (File f : files) {
+
+        for (int i = 0; i < files.size(); i++) {
+            int lineNumber = 0;
+            File f = files.get(i);
             System.out.println(f.getName());
             BufferedReader br = Files.newBufferedReader(f.toPath(), StandardCharsets.UTF_8);
             for (String line = null; (line = br.readLine()) != null; ) {
                 if (line.length() == 0) continue;
-                log.addLogLine(parser.parseLine(line));
-                ctr++;
+                log.addLogLine(parser.parseLine(line, i, lineNumber));
+                lineNumber++;
             }
         }
-        System.out.println(ctr);
-        System.out.println(log.getLogAsSet().size());
-        Iterator it = log.getLogAsSet().descendingSet().descendingIterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
-
         return log;
     }
 
