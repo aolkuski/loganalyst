@@ -1,7 +1,9 @@
 package datastructures;
 
+import io.PropertyHandler;
+import org.apache.log4j.Level;
+
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
 
 /**
  * Created by Alex on 2014-05-02.
@@ -89,26 +91,43 @@ public class LogLine implements Comparable<LogLine> {
             return -1;
         } else {
             if ((this.logLevel != null) && (o.getLogLevel() != null)) {
-                if (this.getLogLevel().intValue() - o.getLogLevel().intValue() != 0) {
-                    return ((Integer) this.getLogLevel().intValue()).compareTo(o.getLogLevel().intValue());
+                if (this.getLogLevel().getSyslogEquivalent() - o.getLogLevel().getSyslogEquivalent() != 0) {
+                    return ((Integer) this.getLogLevel().getSyslogEquivalent()).compareTo(o.getLogLevel().getSyslogEquivalent());
                 }
             }
-
-            return 0;
         }
+        return this.getContent().compareToIgnoreCase(o.getContent());
     }
 
     @Override
     public String toString() {
-        String dateFormat = "";
+        PropertyHandler props = new PropertyHandler("config\\default.properties");
+        String dateFormat = props.getPropertyValue("outputDateFormat");
         SimpleDateFormat sdt = new SimpleDateFormat(dateFormat);
-
-        String line = "" + sdt.format(this.getDate());
+        String time = sdt.format(this.getDate());
+        String line = "" + time + " ";
+        if (this.getAdditionalInfo() != null) {
+            line += this.getAdditionalInfo().toString() + " ";
+        }
         if (this.getLogLevel() != null) {
-            line += this.getLogLevel().getName();
+            line += this.getLogLevel().toString();
         }
         line += this.getContent();
         return line;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this.hashCode() == ((LogLine) object).hashCode()) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = (int) this.getDate() + this.getContent().hashCode();
+        return hash;
     }
 
 

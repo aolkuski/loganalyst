@@ -2,6 +2,7 @@ package core;
 
 import datastructures.LogLine;
 import io.PropertyHandler;
+import org.apache.log4j.Level;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,7 +14,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -51,13 +51,11 @@ public class LogLineParser {
         } else {
             if (levelBeginPosition == 0) {
                 // it means that there is nothing between date and logger level
-                line.setContent(logLineWithoutDate.substring(this.line.getLogLevel().getName().length() - 1).trim());
+                line.setContent(logLineWithoutDate.substring(this.line.getLogLevel().toString().length() - 1).trim());
             } else {
                 // parse additional info from between date and logger level
-                System.out.println(logLineWithoutDate);
-                System.out.println(levelBeginPosition);
                 line.setAdditionalInfo(logLineWithoutDate.substring(0, levelBeginPosition).trim());
-                line.setContent(logLineWithoutDate.substring(this.line.getLogLevel().getName().length() - 1 + levelBeginPosition).trim());
+                line.setContent(logLineWithoutDate.substring(this.line.getLogLevel().toString().length() - 1 + levelBeginPosition).trim());
             }
         }
         return line;
@@ -74,8 +72,7 @@ public class LogLineParser {
         }
         if (loggerType != null) {
             try {
-                System.out.println(loggerType);
-                this.line.setLogLevel(Level.parse(loggerType.toUpperCase()));
+                this.line.setLogLevel(Level.toLevel(loggerType.toUpperCase()));
             } catch (IllegalArgumentException iae) {
                 return null;
             }
