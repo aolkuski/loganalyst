@@ -28,6 +28,10 @@ public class Log {
         return new ArrayList<LogLine>(log);
     }
 
+    public void setLog(TreeSet<LogLine> newLog) {
+        this.log = newLog;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

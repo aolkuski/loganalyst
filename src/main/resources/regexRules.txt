@@ -1,9 +1,14 @@
-desc:To make all the Save-And-Continue button clicks replaced with safe command
-find:driver\.findElement\(By\.xpath\("//input\[@id='et-ef-content-ftf-saveContinueCmdBottom'\]"\)\)\.click\(\);
-replace:CSElementsHelper.saveAndContinue();
+desc:To remove all logger names
+find:\[.+?\]
+replace:
 repeat:false
 
-desc:Print log content from line with error
-find:\s(.*ERROR(.*\s)*)
-replace:$1\s$2
-repeat:true
+desc:Remove lines with 'DEBUG'
+find:\s*.+?DEBUG.+
+replace:
+repeat:false
+
+desc:Remove lines with 'DEBUG'
+find:\s*.+?(I|i)nvalid.+
+replace:
+repeat:false
