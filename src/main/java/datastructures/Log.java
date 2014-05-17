@@ -1,6 +1,7 @@
 package datastructures;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.TreeSet;
 
 /**
@@ -19,10 +20,6 @@ public class Log {
         return false;
     }
 
-    public void printLog() {
-
-    }
-
     public TreeSet<LogLine> getLogAsSet() {
         return log;
     }
@@ -33,9 +30,12 @@ public class Log {
 
     @Override
     public String toString() {
-
-
-        return "";
+        StringBuilder sb = new StringBuilder();
+        Iterator it = this.getLogAsSet().descendingSet().descendingIterator();
+        while (it.hasNext()) {
+            sb.append(it.next() + "\n");
+        }
+        return sb.toString();
     }
 
 

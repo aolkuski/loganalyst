@@ -30,13 +30,5 @@ public class LogWriter {
         }
         bw.flush();
         bw.close();
-
-    }
-
-    public static void printLog(Log log) {
-        Iterator it = log.getLogAsSet().descendingSet().descendingIterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
     }
 }

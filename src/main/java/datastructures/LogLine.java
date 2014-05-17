@@ -113,13 +113,9 @@ public class LogLine implements Comparable<LogLine> {
                 if (this.getLogLevel().getSyslogEquivalent() - o.getLogLevel().getSyslogEquivalent() != 0) {
                     return ((Integer) this.getLogLevel().getSyslogEquivalent()).compareTo(o.getLogLevel().getSyslogEquivalent());
                 } else {
-                    // comaprison across file number
-                    if (this.getFileNumber() - o.getFileNumber() != 0) {
-                        return this.getFileNumber().compareTo(o.getFileNumber());
-                    } else {
-                        if (this.getOrigLineNumber() - o.getOrigLineNumber() != 0) {
-                            return this.getOrigLineNumber().compareTo(o.getOrigLineNumber());
-                        }
+                    // comaprison across line number
+                    if (this.getOrigLineNumber() - o.getOrigLineNumber() != 0) {
+                        return this.getOrigLineNumber().compareTo(o.getOrigLineNumber());
                     }
                 }
             }
