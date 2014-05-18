@@ -18,8 +18,6 @@ import java.util.ArrayList;
  */
 public class LogReader {
 
-    private static PropertyHandler props = null;
-
     public static Log read() throws IOException, DateFormatException {
         LogLineParser parser = new LogLineParser();
         String inputLogDir = Settings.getSetting("inputLogDir");

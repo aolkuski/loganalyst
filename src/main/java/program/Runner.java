@@ -7,7 +7,6 @@ import datastructures.Log;
 import datastructures.LogLine;
 import io.LogReader;
 import io.LogWriter;
-import io.PropertyHandler;
 import replacer.Replacer;
 
 import java.io.IOException;
@@ -20,17 +19,11 @@ import java.util.TreeSet;
  */
 public class Runner {
 
-    private static String pathToConfig;
-    private static PropertyHandler props;
-
-    public static PropertyHandler getPropertyHandler() {
-        return props;
-    }
-
     public static void main(String... args) throws IOException, DateFormatException, URISyntaxException {
 
         String load = "";
-        System.out.println("You've just run LogAnalyst v1.0");
+        Replacer r = null;
+        System.out.println("\nYou've just run LogAnalyst v1.0");
         if (args.length == 0) {
             System.out.println("Default configuration is loaded, since there's not path to other configuration.");
             load = "default.properties";
@@ -38,7 +31,9 @@ public class Runner {
             load = args[0];
             System.out.println("Trying to load configuration specified in argument: " + load);
         }
-        // must be ;)
+
+
+        // initialization of settings
         new Settings(load);
 
         Log log = LogReader.read();
@@ -52,7 +47,7 @@ public class Runner {
         // replacement on each line separately
         if (Settings.getSetting("replace").equals("true") && Settings.getSetting("replacementPerLine").equals("true")) {
             TreeSet<LogLine> tmpLog = new TreeSet<LogLine>();
-            Replacer r = new Replacer(props);
+            r = new Replacer();
             Iterator it = log.getLogAsSet().descendingSet().descendingIterator();
             while (it.hasNext()) {
                 LogLine line = (LogLine) it.next();
@@ -67,12 +62,21 @@ public class Runner {
 
         // replacement on whole log is possible only when there's no other action after it
         if (Settings.getSetting("replace").equals("true") && Settings.getSetting("replacementPerLog").equals("true")) {
-            Replacer r = new Replacer(props);
+            r = new Replacer();
             LogWriter.write(r.replace(log.toString()));
             return;
         }
 
         LogWriter.write(log);
 
+        System.out.println("\nAll the output files are available in direcotry: " + Settings.getSetting("outputLogDir"));
+        if (Settings.getSetting("doAnalyze").equals("true")) {
+            System.out.println("Analysis is available in file: " + Settings.getSetting("outputAnalyzeFileName"));
+        }
+        if (Settings.getSetting("replace").equals("true")) {
+            System.out.println("Lines in merged log were replaced using rules: " + r.getDescriptionOfRules());
+        }
+        System.out.println("Your merged log is available in file: " + Settings.getSetting("outputLogName"));
+        System.out.println("\nDone!\n");
     }
 }

@@ -40,7 +40,6 @@ public class LogLine implements Comparable<LogLine> {
     private Level logLevel;
     private String content;
     private String additionalInfo;
-    private String initialDateFormat;
     private Integer fileNumber;
     private Integer origLineNumber;
 
@@ -58,14 +57,6 @@ public class LogLine implements Comparable<LogLine> {
 
     public void setOrigLineNumber(Integer origLineNumber) {
         this.origLineNumber = origLineNumber;
-    }
-
-    public String getInitialDateFormat() {
-        return initialDateFormat;
-    }
-
-    public void setInitialDateFormat(String initialDateFormat) {
-        this.initialDateFormat = initialDateFormat;
     }
 
     public String getAdditionalInfo() {

@@ -1,4 +1,4 @@
-desc:To remove all logger names
+desc:Remove all logger names
 find:\[.+?\]
 replace:
 repeat:false
@@ -8,7 +8,7 @@ find:\s*.+?DEBUG.+
 replace:
 repeat:false
 
-desc:Remove lines with 'DEBUG'
+desc:Remove lines with 'Invalid'
 find:\s*.+?(I|i)nvalid.+
 replace:
 repeat:false

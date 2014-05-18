@@ -1,7 +1,6 @@
 package replacer;
 
 import core.Settings;
-import io.PropertyHandler;
 
 import java.util.LinkedList;
 import java.util.logging.Level;
@@ -9,11 +8,9 @@ import java.util.logging.Logger;
 
 public class Replacer {
     private static String text = "";
-    private PropertyHandler props;
+    private static ExpressionsReader er;
+    private static boolean notLoaded = true;
 
-    public Replacer(PropertyHandler props) {
-        this.props = props;
-    }
     /**
      * Method responsible for running replacements on given text.
      * It also reads all rules and stores them in memory.
@@ -22,13 +19,17 @@ public class Replacer {
      * @return
      */
     public String replace(String textToBeReplaced) {
-        ExpressionsReader er = new ExpressionsReader();
+        er = null;
+        er = new ExpressionsReader();
         String path = Settings.getSetting("regexRulesFilePath");
-        try {
-            er.loadExpressions(path);
-        } catch (CorruptedRulesFileException e) {
-            e.printStackTrace();
-            Logger.getAnonymousLogger().log(Level.SEVERE, "Rules loading error. No replacement done.");
+        if (notLoaded) {
+            try {
+                er.loadExpressions(path);
+                notLoaded = false;
+            } catch (CorruptedRulesFileException e) {
+                e.printStackTrace();
+                Logger.getAnonymousLogger().log(Level.SEVERE, "Rules loading error. No replacement done.");
+            }
         }
         text = textToBeReplaced;
         LinkedList<Expression> expressions = er.getExpressions();
@@ -71,5 +72,14 @@ public class Replacer {
             }
         }
         return String.valueOf(repl);
+    }
+
+    public String getDescriptionOfRules() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n");
+        for (Expression e : er.getExpressions()) {
+            sb.append("\t" + e.getDescription() + "\n");
+        }
+        return sb.toString();
     }
 }

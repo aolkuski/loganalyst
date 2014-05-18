@@ -9,7 +9,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Logger;
 
 /**
  * Created by Alex on 2014-05-11.
@@ -24,7 +23,6 @@ public class LogLineParser {
 
     public LogLineParser() throws FileNotFoundException {
         commonDateFormatsFilePath = Settings.getSetting("commonDateFormatsFilePath");
-        System.out.println(commonDateFormatsFilePath);
         dateFormats = getDateFormats();
     }
 
@@ -44,7 +42,6 @@ public class LogLineParser {
         String logLineWithoutDate = logLine.substring(dateFormatLength).trim();
 
         if ((levelBeginPosition = parseLogLevel(logLineWithoutDate)) == null) {
-            Logger.getLogger("LogLineParser").info("No log level specified");
             line.setContent(logLineWithoutDate);
         } else {
             if (levelBeginPosition == 0) {

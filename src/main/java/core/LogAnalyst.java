@@ -1,8 +1,6 @@
 package core;
 
 import datastructures.Log;
-import io.PropertyHandler;
-import program.Runner;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,8 +11,6 @@ import java.io.IOException;
  * Created by Alex on 2014-05-07.
  */
 public class LogAnalyst {
-
-    private static PropertyHandler props = Runner.getPropertyHandler();
 
     public static void analyze(Log log) {
         // TODO: co chcesz i jak chcesz ;)
