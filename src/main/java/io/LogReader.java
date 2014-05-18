@@ -4,6 +4,7 @@ import core.DateFormatException;
 import core.LogLineParser;
 import core.Settings;
 import datastructures.Log;
+import datastructures.LogLine;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
  */
 public class LogReader {
 
-    public static Log read() throws IOException, DateFormatException {
+    public static Log read() throws IOException {
         LogLineParser parser = new LogLineParser();
         String inputLogDir = Settings.getSetting("inputLogDir");
         Log log = new Log();
@@ -34,8 +35,16 @@ public class LogReader {
             File f = files.get(i);
             BufferedReader br = Files.newBufferedReader(f.toPath(), StandardCharsets.UTF_8);
             for (String line = null; (line = br.readLine()) != null; ) {
+                LogLine l = null;
                 if (line.length() == 0) continue;
-                log.addLogLine(parser.parseLine(line, i, lineNumber));
+                try {
+                    l = parser.parseLine(line, i, lineNumber);
+                } catch (DateFormatException dfe) {
+                    System.out.println(dfe.getMessage());
+                }
+                if (l != null) {
+                    log.addLogLine(l);
+                }
                 lineNumber++;
             }
         }

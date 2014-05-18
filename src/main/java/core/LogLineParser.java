@@ -19,6 +19,7 @@ public class LogLineParser {
     private ArrayList<String> dateFormats;
     private LogLine line;
     private static String defaultDateFormat = null;
+    private static int errorsOnParsing = 0;
 
 
     public LogLineParser() throws FileNotFoundException {
@@ -26,6 +27,9 @@ public class LogLineParser {
         dateFormats = getDateFormats();
     }
 
+    public static int getNoOfErrorsOnParsing() {
+        return errorsOnParsing;
+    }
 
     public LogLine parseLine(String logLine, int fileNumber, int origLineNumber) throws IOException, DateFormatException {
         line = new LogLine();
@@ -35,10 +39,16 @@ public class LogLineParser {
         line.setFileNumber(fileNumber);
 
         // insert info about date to structure
-        if ((dateFormatLength = parseDate(logLine)) == null) {
-            throw new DateFormatException("No format date format specified in file is applicable to this line:\n" + logLine);
+        try {
+            if ((dateFormatLength = parseDate(logLine)) == null) {
+                errorsOnParsing++;
+                throw new DateFormatException("[LogLineParser] Error: No format date format specified in file is applicable to this line: " + logLine);
+            }
+        } catch (StringIndexOutOfBoundsException outOfBounds) {
+            System.out.println("[LogLineParser] Error: Line too short for any available date formats: " + logLine);
+            errorsOnParsing++;
+            return null;
         }
-        ;
         String logLineWithoutDate = logLine.substring(dateFormatLength).trim();
 
         if ((levelBeginPosition = parseLogLevel(logLineWithoutDate)) == null) {

@@ -2,6 +2,7 @@ package program;
 
 import core.DateFormatException;
 import core.LogAnalyst;
+import core.LogLineParser;
 import core.Settings;
 import datastructures.Log;
 import datastructures.LogLine;
@@ -25,11 +26,11 @@ public class Runner {
         Replacer r = null;
         System.out.println("\nYou've just run LogAnalyst v1.0");
         if (args.length == 0) {
-            System.out.println("Default configuration is loaded, since there's not path to other configuration.");
+            System.out.println("Default configuration is loaded, since there's not path to other configuration.\n");
             load = "default.properties";
         } else {
             load = args[0];
-            System.out.println("Trying to load configuration specified in argument: " + load);
+            System.out.println("Trying to load configuration specified in argument: " + load + "\n");
         }
 
 
@@ -64,7 +65,6 @@ public class Runner {
         if (Settings.getSetting("replace").equals("true") && Settings.getSetting("replacementPerLog").equals("true")) {
             r = new Replacer();
             LogWriter.write(r.replace(log.toString()));
-            return;
         }
 
         LogWriter.write(log);
@@ -76,6 +76,7 @@ public class Runner {
         if (Settings.getSetting("replace").equals("true")) {
             System.out.println("Lines in merged log were replaced using rules: " + r.getDescriptionOfRules());
         }
+        System.out.println("While parsing, got " + LogLineParser.getNoOfErrorsOnParsing() + " errors. Those lines are not added to merged log.");
         System.out.println("Your merged log is available in file: " + Settings.getSetting("outputLogName"));
         System.out.println("\nDone!\n");
     }
