@@ -2,6 +2,7 @@ package core;
 
 import datastructures.Log;
 import io.PropertyHandler;
+import program.Runner;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,19 +14,20 @@ import java.io.IOException;
  */
 public class LogAnalyst {
 
+    private static PropertyHandler props = Runner.getPropertyHandler();
+
     public static void analyze(Log log) {
         // TODO: co chcesz i jak chcesz ;)
     }
 
     private static BufferedWriter prepareResources() throws IOException {
-        PropertyHandler props = new PropertyHandler("config\\default.properties");
-        String outputFilePath = props.getPropertyValue("outputLogDir");
+        String outputFilePath = Settings.getSetting("outputLogDir");
 
         File outputDir = new File(outputFilePath);
         if (!outputDir.exists()) {
             outputDir.mkdirs();
         }
-        File outputLog = new File(props.getPropertyValue("outputLogDir") + props.getPropertyValue("outputAnalyzeFileName"));
+        File outputLog = new File(Settings.getSetting("outputLogDir") + Settings.getSetting("outputAnalyzeFileName"));
         BufferedWriter bw = new BufferedWriter(new FileWriter(outputLog));
 
         return bw;

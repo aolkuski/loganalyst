@@ -1,15 +1,10 @@
 package core;
 
 import datastructures.LogLine;
-import io.PropertyHandler;
 import org.apache.log4j.Level;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Field;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,16 +16,15 @@ import java.util.logging.Logger;
  */
 public class LogLineParser {
 
-    private PropertyHandler props;
     private String commonDateFormatsFilePath;
     private ArrayList<String> dateFormats;
     private LogLine line;
     private static String defaultDateFormat = null;
 
 
-    public LogLineParser(String propertyHandlerPath) {
-        props = new PropertyHandler(propertyHandlerPath);
-        commonDateFormatsFilePath = props.getPropertyValue("commonDateFormatsFilePath");
+    public LogLineParser() throws FileNotFoundException {
+        commonDateFormatsFilePath = Settings.getSetting("commonDateFormatsFilePath");
+        System.out.println(commonDateFormatsFilePath);
         dateFormats = getDateFormats();
     }
 
@@ -117,13 +111,13 @@ public class LogLineParser {
     }
 
 
-    private ArrayList<String> getDateFormats() {
+    private ArrayList<String> getDateFormats() throws FileNotFoundException {
         BufferedReader br = null;
+
         try {
-            System.out.println(commonDateFormatsFilePath);
-            br = Files.newBufferedReader(new File(commonDateFormatsFilePath).toPath(), StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            e.printStackTrace();
+            br = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream(commonDateFormatsFilePath)));
+        } catch (NullPointerException npe) {
+            br = new BufferedReader(new FileReader("src\\main\\resources\\commonDateFormats"));
         }
         ArrayList<String> dateFormats = new ArrayList<String>();
 

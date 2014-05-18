@@ -1,5 +1,6 @@
 package io;
 
+import core.Settings;
 import datastructures.Log;
 
 import java.io.BufferedWriter;
@@ -12,7 +13,6 @@ import java.util.Iterator;
  * Created by Alex on 2014-05-07.
  */
 public class LogWriter {
-
 
     public static void write(Log log) throws IOException {
         BufferedWriter bw = prepareResources();
@@ -33,14 +33,13 @@ public class LogWriter {
     }
 
     private static BufferedWriter prepareResources() throws IOException {
-        PropertyHandler props = new PropertyHandler("config\\default.properties");
-        String outputFilePath = props.getPropertyValue("outputLogDir");
+        String outputFilePath = Settings.getSetting("outputLogDir");
 
         File outputDir = new File(outputFilePath);
         if (!outputDir.exists()) {
             outputDir.mkdirs();
         }
-        File outputLog = new File(props.getPropertyValue("outputLogDir") + props.getPropertyValue("outputLogName"));
+        File outputLog = new File(Settings.getSetting("outputLogDir") + Settings.getSetting("outputLogName"));
         BufferedWriter bw = new BufferedWriter(new FileWriter(outputLog));
 
         return bw;

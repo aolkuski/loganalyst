@@ -1,6 +1,6 @@
 package datastructures;
 
-import io.PropertyHandler;
+import core.Settings;
 import org.apache.log4j.Level;
 
 import java.text.SimpleDateFormat;
@@ -125,8 +125,7 @@ public class LogLine implements Comparable<LogLine> {
 
     @Override
     public String toString() {
-        PropertyHandler props = new PropertyHandler("config\\default.properties");
-        String dateFormat = props.getPropertyValue("outputDateFormat");
+        String dateFormat = Settings.getSetting("outputDateFormat");
         SimpleDateFormat sdt = new SimpleDateFormat(dateFormat);
         String time = sdt.format(this.getDate());
         String line = "" + time + " ";

@@ -25,6 +25,9 @@
         <module name="rewizje" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="rewizje" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

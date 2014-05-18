@@ -1,5 +1,6 @@
 package replacer;
 
+import core.Settings;
 import io.PropertyHandler;
 
 import java.util.LinkedList;
@@ -8,8 +9,11 @@ import java.util.logging.Logger;
 
 public class Replacer {
     private static String text = "";
+    private PropertyHandler props;
 
-
+    public Replacer(PropertyHandler props) {
+        this.props = props;
+    }
     /**
      * Method responsible for running replacements on given text.
      * It also reads all rules and stores them in memory.
@@ -19,8 +23,7 @@ public class Replacer {
      */
     public String replace(String textToBeReplaced) {
         ExpressionsReader er = new ExpressionsReader();
-        PropertyHandler props = new PropertyHandler("config\\default.properties");
-        String path = props.getPropertyValue("regexRulesFilePath");
+        String path = Settings.getSetting("regexRulesFilePath");
         try {
             er.loadExpressions(path);
         } catch (CorruptedRulesFileException e) {

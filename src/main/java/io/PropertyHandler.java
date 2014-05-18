@@ -9,6 +9,7 @@ import java.util.Properties;
 public class PropertyHandler {
 
     String propertiesPath;
+    InputStream is = null;
 
     /**
      * Constructor of properties object.
@@ -19,8 +20,16 @@ public class PropertyHandler {
         if (pathToProperties == null || pathToProperties == "") {
             propertiesPath = "config\\default.properties";
         } else {
-            propertiesPath = pathToProperties;
+            try {
+                propertiesPath = this.getClass().getClassLoader().getResource("default.properties").getPath();
+            } catch (NullPointerException npe) {
+                is = this.getClass().getClassLoader().getResourceAsStream("default.properties");
+            }
         }
+    }
+
+    public PropertyHandler(InputStream inputStream) {
+        this.is = inputStream;
     }
 
     /**
@@ -38,7 +47,11 @@ public class PropertyHandler {
         if (val == "" || val == null || val.equals("null")) {
             Properties props = new Properties();
             try {
-                props.load(new FileInputStream(new File(propertiesPath)));
+                if (propertiesPath == null) {
+                    props.load(is);
+                } else {
+                    props.load(new FileInputStream(new File(propertiesPath)));
+                }
                 val = props.getProperty(propertyKey);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

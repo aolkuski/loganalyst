@@ -2,6 +2,7 @@ package io;
 
 import core.DateFormatException;
 import core.LogLineParser;
+import core.Settings;
 import datastructures.Log;
 
 import java.io.BufferedReader;
@@ -17,11 +18,11 @@ import java.util.ArrayList;
  */
 public class LogReader {
 
-    private static LogLineParser parser = new LogLineParser("config\\default.properties");
+    private static PropertyHandler props = null;
 
     public static Log read() throws IOException, DateFormatException {
-        PropertyHandler props = new PropertyHandler("config\\default.properties");
-        String inputLogDir = props.getPropertyValue("inputLogDir");
+        LogLineParser parser = new LogLineParser();
+        String inputLogDir = Settings.getSetting("inputLogDir");
         Log log = new Log();
 
         if (!directoryExists(inputLogDir)) {
@@ -33,7 +34,6 @@ public class LogReader {
         for (int i = 0; i < files.size(); i++) {
             int lineNumber = 0;
             File f = files.get(i);
-            System.out.println(f.getName());
             BufferedReader br = Files.newBufferedReader(f.toPath(), StandardCharsets.UTF_8);
             for (String line = null; (line = br.readLine()) != null; ) {
                 if (line.length() == 0) continue;
@@ -52,7 +52,6 @@ public class LogReader {
     }
 
     private static ArrayList<File> listFiles(String dirPath) throws FileNotFoundException {
-        PropertyHandler props = new PropertyHandler("config\\default.properties");
         ArrayList<File> files = new ArrayList<File>();
 
         File dir = new File(dirPath);
@@ -66,7 +65,7 @@ public class LogReader {
         }
 
         for (File f : filesArray) {
-            if (f.isFile() && (!f.isDirectory()) && f.exists() && (f.length() > Integer.valueOf(props.getPropertyValue("minimumFileLengthB")))) {
+            if (f.isFile() && (!f.isDirectory()) && f.exists() && (f.length() > Integer.valueOf(Settings.getSetting("minimumFileLengthB")))) {
                 files.add(f);
             }
         }
