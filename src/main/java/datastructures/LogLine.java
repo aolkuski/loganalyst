@@ -4,6 +4,7 @@ import core.Settings;
 import org.apache.log4j.Level;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Alex on 2014-05-02.
@@ -112,6 +113,10 @@ public class LogLine implements Comparable<LogLine> {
             }
         }
         return this.getContent().compareToIgnoreCase(o.getContent());
+    }
+
+    public Date getDateObject() {
+        return new Date(date);
     }
 
     @Override

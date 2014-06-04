@@ -54,7 +54,6 @@ public class LogReader {
     private static boolean directoryExists(String inputLogDir) {
 
         File outputDir = new File(inputLogDir);
-
         return outputDir.exists();
     }
 
@@ -72,7 +71,7 @@ public class LogReader {
         }
 
         for (File f : filesArray) {
-            if (f.isFile() && (!f.isDirectory()) && f.exists() && (f.length() > Integer.valueOf(Settings.getSetting("minimumFileLengthB")))) {
+            if (f.isFile() && (!f.isDirectory()) && f.exists() && (f.length() > Integer.valueOf(Settings.getSetting("minimumFileLengthB"))) && !f.isHidden()) {
                 files.add(f);
             }
         }
