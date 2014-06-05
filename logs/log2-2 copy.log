@@ -1,0 +1,299 @@
+2014-05-30 16:04:23,434 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 16:06:53,431 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 16:06:53,445 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 16:12:23,428 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 16:12:23,441 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 16:16:53,455 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 16:16:53,459 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 16:19:25,710 SDA ERROR [SearchServerLogHandler] STRUCTS
+2014-05-30 16:19:25,710 com.taleo.searchclient.core.exceptions.SearchClientException: java.net.SocketException: Connection reset
+2014-05-30 16:19:25,710 	at com.taleo.searchclient.service.BaseClientService.postMethod(BaseClientService.java:155)
+2014-05-30 16:19:25,710 	at com.taleo.searchclient.service.BaseClientService.callSearchServer(BaseClientService.java:116)
+2014-05-30 16:19:25,710 	at com.taleo.searchclient.service.BaseClientService.callSearchServer(BaseClientService.java:88)
+2014-05-30 16:19:25,710 	at com.taleo.searchclient.service.IndexingService.callSearchServer(IndexingService.java:310)
+2014-05-30 16:19:25,710 	at com.taleo.searchclient.service.IndexingService.callSearchServer(IndexingService.java:304)
+2014-05-30 16:19:25,710 	at com.taleo.searchclient.service.IndexingService.getReservation(IndexingService.java:75)
+2014-05-30 16:19:25,710 	at com.taleo.searchagent.agent.SearchAgent.expand(SearchAgent.java:700)
+2014-05-30 16:19:25,710 	at com.taleo.searchagent.agent.SearchAgent.run(SearchAgent.java:540)
+2014-05-30 16:19:25,710 	at com.taleo.searchagent.scheduler.SearchAgentTimerRunnable.mainLoop(SearchAgentTimerRunnable.java:105)
+2014-05-30 16:19:25,710 	at com.taleo.searchagent.scheduler.SearchAgentTimerRunnable.run(SearchAgentTimerRunnable.java:34)
+2014-05-30 16:19:25,710 	at com.taleo.akira.context.ContextualizedRunnable.runIt(ContextualizedRunnable.java:561)
+2014-05-30 16:19:25,710 	at com.taleo.akira.context.ContextualizedRunnable.tryVPD(ContextualizedRunnable.java:513)
+2014-05-30 16:19:25,710 	at com.taleo.akira.context.ContextualizedRunnable.tryCatchException(ContextualizedRunnable.java:486)
+2014-05-30 16:19:25,710 	at com.taleo.akira.context.ContextualizedRunnable.tryContext(ContextualizedRunnable.java:466)
+2014-05-30 16:19:25,711 	at com.taleo.akira.context.ContextualizedRunnable.run(ContextualizedRunnable.java:439)
+2014-05-30 16:19:25,711 	at java.lang.Thread.run(Thread.java:662)
+2014-05-30 16:19:25,711 Caused by: java.net.SocketException: Connection reset
+2014-05-30 16:19:25,711 	at java.net.SocketInputStream.read(SocketInputStream.java:168)
+2014-05-30 16:19:25,711 	at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+2014-05-30 16:19:25,711 	at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+2014-05-30 16:19:25,711 	at org.apache.commons.httpclient.HttpParser.readRawLine(HttpParser.java:78)
+2014-05-30 16:19:25,711 	at org.apache.commons.httpclient.HttpParser.readLine(HttpParser.java:106)
+2014-05-30 16:19:25,711 	at org.apache.commons.httpclient.HttpConnection.readLine(HttpConnection.java:1116)
+2014-05-30 16:19:25,711 	at org.apache.commons.httpclient.HttpMethodBase.readStatusLine(HttpMethodBase.java:1973)
+2014-05-30 16:19:25,711 	at org.apache.commons.httpclient.HttpMethodBase.readResponse(HttpMethodBase.java:1735)
+2014-05-30 16:19:25,711 	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1098)
+2014-05-30 16:19:25,711 	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:398)
+2014-05-30 16:19:25,711 	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+2014-05-30 16:19:25,711 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+2014-05-30 16:19:25,711 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+2014-05-30 16:19:25,711 	at com.taleo.searchclient.service.BaseClientService.postMethod(BaseClientService.java:149)
+2014-05-30 16:19:25,711 	... 15 more
+2014-05-30 16:19:40,026 SDA ERROR [SearchServerLogHandler] JOBROLEOLF
+2014-05-30 16:19:40,026 com.taleo.searchclient.core.exceptions.SearchClientException: java.net.SocketException: Connection reset
+2014-05-30 16:19:40,026 	at com.taleo.searchclient.service.BaseClientService.postMethod(BaseClientService.java:155)
+2014-05-30 16:19:40,026 	at com.taleo.searchclient.service.BaseClientService.callSearchServer(BaseClientService.java:116)
+2014-05-30 16:19:40,026 	at com.taleo.searchclient.service.BaseClientService.callSearchServer(BaseClientService.java:88)
+2014-05-30 16:19:40,026 	at com.taleo.searchclient.service.IndexingService.callSearchServer(IndexingService.java:310)
+2014-05-30 16:19:40,026 	at com.taleo.searchclient.service.IndexingService.callSearchServer(IndexingService.java:304)
+2014-05-30 16:19:40,026 	at com.taleo.searchclient.service.IndexingService.getReservation(IndexingService.java:75)
+2014-05-30 16:19:40,026 	at com.taleo.searchagent.agent.SearchAgent.expand(SearchAgent.java:700)
+2014-05-30 16:19:40,026 	at com.taleo.searchagent.agent.SearchAgent.run(SearchAgent.java:540)
+2014-05-30 16:19:40,026 	at com.taleo.searchagent.scheduler.SearchAgentTimerRunnable.mainLoop(SearchAgentTimerRunnable.java:105)
+2014-05-30 16:19:40,027 	at com.taleo.searchagent.scheduler.SearchAgentTimerRunnable.run(SearchAgentTimerRunnable.java:34)
+2014-05-30 16:19:40,027 	at com.taleo.akira.context.ContextualizedRunnable.runIt(ContextualizedRunnable.java:561)
+2014-05-30 16:19:40,027 	at com.taleo.akira.context.ContextualizedRunnable.tryVPD(ContextualizedRunnable.java:513)
+2014-05-30 16:19:40,027 	at com.taleo.akira.context.ContextualizedRunnable.tryCatchException(ContextualizedRunnable.java:486)
+2014-05-30 16:19:40,027 	at com.taleo.akira.context.ContextualizedRunnable.tryContext(ContextualizedRunnable.java:466)
+2014-05-30 16:19:40,027 	at com.taleo.akira.context.ContextualizedRunnable.run(ContextualizedRunnable.java:439)
+2014-05-30 16:19:40,027 	at java.lang.Thread.run(Thread.java:662)
+2014-05-30 16:19:40,027 Caused by: java.net.SocketException: Connection reset
+2014-05-30 16:19:40,027 	at java.net.SocketInputStream.read(SocketInputStream.java:168)
+2014-05-30 16:19:40,027 	at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+2014-05-30 16:19:40,027 	at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+2014-05-30 16:19:40,027 	at org.apache.commons.httpclient.HttpParser.readRawLine(HttpParser.java:78)
+2014-05-30 16:19:40,027 	at org.apache.commons.httpclient.HttpParser.readLine(HttpParser.java:106)
+2014-05-30 16:19:40,027 	at org.apache.commons.httpclient.HttpConnection.readLine(HttpConnection.java:1116)
+2014-05-30 16:19:40,027 	at org.apache.commons.httpclient.HttpMethodBase.readStatusLine(HttpMethodBase.java:1973)
+2014-05-30 16:19:40,027 	at org.apache.commons.httpclient.HttpMethodBase.readResponse(HttpMethodBase.java:1735)
+2014-05-30 16:19:40,027 	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1098)
+2014-05-30 16:19:40,027 	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:398)
+2014-05-30 16:19:40,027 	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+2014-05-30 16:19:40,027 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+2014-05-30 16:19:40,027 	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+2014-05-30 16:19:40,027 	at com.taleo.searchclient.service.BaseClientService.postMethod(BaseClientService.java:149)
+2014-05-30 16:19:40,027 	... 15 more
+2014-05-30 16:22:23,425 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 16:22:23,438 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 16:26:53,461 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 16:26:53,474 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 16:32:53,441 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 16:32:53,455 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 16:36:53,437 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 16:36:53,455 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 16:42:23,426 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 16:42:23,441 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 16:46:53,422 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 16:46:53,436 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 16:52:23,419 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 16:52:23,433 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 16:56:53,431 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 16:56:53,445 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 17:04:23,420 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 17:04:23,434 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 17:06:53,447 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 17:06:53,460 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 17:12:23,508 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 17:12:23,525 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 17:16:53,424 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 17:16:53,436 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 17:22:23,438 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 17:22:23,453 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 17:26:53,472 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 17:26:53,485 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 17:32:53,429 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 17:32:53,447 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 17:36:53,435 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 17:36:53,447 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 17:42:23,454 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 17:42:23,523 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 17:46:53,441 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 17:46:53,455 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 17:52:23,460 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 17:52:23,474 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 17:56:53,435 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 17:56:53,450 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 18:04:23,425 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 18:04:23,438 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 18:05:19,856 JB INFO  [arjuna] ARJUNA-12296 ExpiredEntryMonitor running at Fri, 30 May 2014 18:05:19
+2014-05-30 18:06:53,452 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 18:06:53,466 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 18:12:23,434 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 18:12:23,447 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 18:16:53,439 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 18:16:53,453 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 18:20:11,448 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.CieLocation Phase 0 search query duration: 298 ms
+2014-05-30 18:20:12,752 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.CieLocation Phase 1 search query duration: 1302 ms
+2014-05-30 18:20:14,645 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.NetworkLocation Phase 0 search query duration: 1891 ms
+2014-05-30 18:20:25,669 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.NetworkLocation Phase 1 search query duration: 11021 ms
+2014-05-30 18:20:25,793 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.Organization Phase 0 search query duration: 102 ms
+2014-05-30 18:20:26,111 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.Organization Phase 1 search query duration: 316 ms
+2014-05-30 18:20:26,213 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.CieJobField Phase 0 search query duration: 98 ms
+2014-05-30 18:20:26,563 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.CieJobField Phase 1 search query duration: 348 ms
+2014-05-30 18:22:23,427 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 18:22:23,441 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 18:26:53,475 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 18:26:53,489 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 18:32:53,438 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 18:32:53,451 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 18:36:53,576 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 18:36:53,593 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 18:42:23,459 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 18:42:23,472 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 18:46:53,441 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 18:46:53,454 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 18:52:23,429 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 18:52:23,442 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 18:56:53,426 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 18:56:53,439 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 19:04:23,422 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 19:04:23,436 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 19:06:53,433 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 19:06:53,447 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 19:12:23,419 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 19:12:23,436 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 19:16:53,430 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 19:16:53,445 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 19:22:23,419 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 19:22:23,432 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 19:26:53,466 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 19:26:53,480 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 19:32:53,468 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 19:32:53,481 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 19:36:53,430 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 19:36:53,445 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 19:42:23,430 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 19:42:23,444 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 19:46:53,430 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 19:46:53,446 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 19:52:23,419 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 19:52:23,433 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 19:56:53,422 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 19:56:53,435 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 20:04:23,406 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 20:04:23,420 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 20:06:53,425 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 20:06:53,441 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 20:12:23,420 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 20:12:23,434 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 20:16:53,428 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 20:16:53,443 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 20:22:23,540 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 20:22:23,545 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 20:26:53,461 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 20:26:53,475 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 20:32:53,459 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 20:32:53,473 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 20:36:53,961 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 20:36:53,974 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 20:42:23,478 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 21:04:23,447 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 21:06:53,420 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 21:06:53,434 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 21:12:23,438 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 21:12:23,451 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 21:16:53,432 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 21:16:53,446 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 21:22:23,449 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 21:22:23,454 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 21:26:53,457 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 21:26:53,470 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 21:32:53,420 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 21:32:53,434 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 21:36:53,434 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 21:36:53,449 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 21:42:23,558 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 21:42:23,572 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 21:46:53,438 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 21:46:53,452 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 21:52:23,417 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 21:52:23,431 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 21:56:53,430 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 21:56:53,445 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 22:04:23,460 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 22:04:23,475 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 22:06:53,428 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 22:06:53,443 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 22:07:08,367 CS INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:07:14,402 CS INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:10:12,676 CS INFO  [AkiraJgroupCompressProtocol] Begin Cleaning Deflater Pool.
+2014-05-30 22:10:12,678 CS INFO  [AkiraJgroupCompressProtocol] End Cleaning Deflater Pool.
+2014-05-30 22:10:12,687 CS INFO  [AkiraJgroupCompressProtocol] Begin Cleaning Inflater Pool.
+2014-05-30 22:10:12,688 CS INFO  [AkiraJgroupCompressProtocol] End Cleaning Inflater Pool.
+2014-05-30 22:10:42,716 ES INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:10:42,716 ES INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:12:23,433 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 22:12:23,448 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 22:13:22,889 NRS INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:13:22,889 NRS INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:14:05,854 NHP INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:15:12,106 NRS INFO  [AkiraJgroupCompressProtocol] Begin Cleaning Inflater Pool.
+2014-05-30 22:15:12,106 NHP INFO  [AkiraJgroupCompressProtocol] Begin Cleaning Inflater Pool.
+2014-05-30 22:15:12,107 NRS INFO  [AkiraJgroupCompressProtocol] End Cleaning Inflater Pool.
+2014-05-30 22:15:12,107 NHP INFO  [AkiraJgroupCompressProtocol] End Cleaning Inflater Pool.
+2014-05-30 22:15:12,108 ES INFO  [AkiraJgroupCompressProtocol] Begin Cleaning Inflater Pool.
+2014-05-30 22:15:12,109 ES INFO  [AkiraJgroupCompressProtocol] End Cleaning Inflater Pool.
+2014-05-30 22:15:13,445 OB INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:15:13,445 OB INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:15:26,200 OB INFO  [AkiraJgroupCompressProtocol] Begin Cleaning Inflater Pool.
+2014-05-30 22:15:26,200 OB INFO  [AkiraJgroupCompressProtocol] End Cleaning Inflater Pool.
+2014-05-30 22:16:35,518 PM INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:16:35,725 PM INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:16:53,448 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 22:16:53,462 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 22:18:23,253 SDA INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:18:23,253 SDA INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:19:47,095 SO INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:19:47,206 SO INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:20:11,527 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.CieLocation Phase 0 search query duration: 305 ms
+2014-05-30 22:20:13,059 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.CieLocation Phase 1 search query duration: 1529 ms
+2014-05-30 22:20:15,276 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.NetworkLocation Phase 0 search query duration: 2213 ms
+2014-05-30 22:20:26,889 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.NetworkLocation Phase 1 search query duration: 11609 ms
+2014-05-30 22:20:27,189 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.Organization Phase 0 search query duration: 276 ms
+2014-05-30 22:20:27,672 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.Organization Phase 1 search query duration: 481 ms
+2014-05-30 22:20:27,953 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.CieJobField Phase 0 search query duration: 278 ms
+2014-05-30 22:20:28,561 CS INFO  [BaseCompositeManager] com.taleo.systemcomponent.olf.entity.CieJobField Phase 1 search query duration: 606 ms
+2014-05-30 22:20:30,440 SDA INFO  [AkiraJgroupCompressProtocol] Begin Cleaning Inflater Pool.
+2014-05-30 22:20:30,441 PM INFO  [AkiraJgroupCompressProtocol] Begin Cleaning Inflater Pool.
+2014-05-30 22:20:30,441 SDA INFO  [AkiraJgroupCompressProtocol] End Cleaning Inflater Pool.
+2014-05-30 22:20:30,441 SO INFO  [AkiraJgroupCompressProtocol] Begin Cleaning Inflater Pool.
+2014-05-30 22:20:30,442 PM INFO  [AkiraJgroupCompressProtocol] End Cleaning Inflater Pool.
+2014-05-30 22:20:30,442 SO INFO  [AkiraJgroupCompressProtocol] End Cleaning Inflater Pool.
+2014-05-30 22:21:26,852 TR INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:21:26,992 TR INFO  [AkiraJgroupCompressProtocol] Releasing cleaning schemaphore.
+2014-05-30 22:22:23,434 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 22:22:23,447 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 22:25:11,840 TR INFO  [AkiraJgroupCompressProtocol] Begin Cleaning Inflater Pool.
+2014-05-30 22:25:11,841 TR INFO  [AkiraJgroupCompressProtocol] End Cleaning Inflater Pool.
+2014-05-30 22:26:53,471 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 22:26:53,485 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 22:32:53,432 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 22:32:53,441 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 22:36:53,424 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 22:36:53,437 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 22:56:53,424 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 22:56:53,438 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 23:04:23,417 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 23:04:23,430 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 23:06:53,432 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 23:06:53,447 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 23:12:23,421 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 23:12:23,435 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 23:16:53,425 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 23:16:53,439 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 23:22:23,422 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 23:22:23,435 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 23:26:53,446 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 23:26:53,459 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 23:33:23,423 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 23:33:23,437 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 23:36:53,445 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 23:36:53,450 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 23:42:23,426 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 23:42:23,440 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 23:46:53,432 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 23:46:53,451 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 23:52:23,443 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 23:52:23,458 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
+2014-05-30 23:56:53,419 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Started
+2014-05-30 23:56:53,435 ES INFO  [DefaultExternalStatusUpdateTask] External Status Update Task Completed
