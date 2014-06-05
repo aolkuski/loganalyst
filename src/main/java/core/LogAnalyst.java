@@ -22,8 +22,8 @@ public class LogAnalyst {
             List<List<LogLine>> logLinesList = new ArrayList<List<LogLine>>();
             for (LogLine index : segregatedLogs.get(classNameProblem)) {
                 logLinesList.add(getLogLineSurrounding(3, 0, index.getOrigLineNumber(), log.getLogAsSet()));
-                analyzeSyntax(logLinesList, 3, classNameProblem);
             }
+            analyzeSyntax(logLinesList, 3, classNameProblem);
         }
         analyzeTime(segregatedLogs);
     }
@@ -31,7 +31,7 @@ public class LogAnalyst {
     public static void analyzeTime(Map<String, List<LogLine>> segregatedLogs) {
         for (String errorType : segregatedLogs.keySet()) {
             List<LogLine> errorLogs = segregatedLogs.get(errorType);
-            System.out.print("Error " + errorType + " appeared " + errorLogs.size() + " times.");
+            System.out.print("Error " + errorType + " appeared " + errorLogs.size() + " times, ");
             //analyse hours
             int[] hours = new int[24];
             for (LogLine logLine : errorLogs) {
@@ -57,7 +57,7 @@ public class LogAnalyst {
         }
         for (int i = 0; i < 12; i++) {
             if (distance[i] * 2 > peaks) {
-                System.out.print("Problems happen each " + i + hours);
+                System.out.print("Problems happen each " + i + hours + "\n");
             }
         }
     }
@@ -76,16 +76,16 @@ public class LogAnalyst {
         int max = 0;
         int beginning = 0;
         for (int i = 0; i < 22; i++) {
-            if (hours[i] + hours[i + 1] + hours[i + 2] < max) {
+            if (hours[i] + hours[i + 1] + hours[i + 2] > max) {
                 max = hours[i] + hours[i + 1] + hours[i + 2];
                 beginning = i;
             }
         }
         int average = total / 3;
         if (max >= average * 2) { //twice bigger than the average means the hours of interest
-            System.out.print("Error appear mostly around" + beginning + 1);
+            System.out.print("Error appear mostly around " + (beginning + 2) + "\n");
         } else {
-            System.out.print("No rush hours were detected");
+            System.out.print("No rush hours were detected\n");
         }
     }
 
@@ -106,7 +106,7 @@ public class LogAnalyst {
         }
         for (String keys : occurrences.keySet()) {
             if (occurrences.get(keys) > threshold) {
-                System.out.print("Error " + error + "was often preceded/followed by " + keys);
+                System.out.print("Error " + error + " was usually preceded/followed by " + keys + "\n");
             }
         }
     }
@@ -129,7 +129,7 @@ public class LogAnalyst {
         }
         if (max * 2 >= total && total > 3) {
             DateFormatSymbols dateFormatSymbols = new DateFormatSymbols();
-            System.out.print("Error appears mostly on " + dateFormatSymbols.getWeekdays()[day]);
+            System.out.print("Error appears mostly on " + dateFormatSymbols.getWeekdays()[day] + "\n");
         }
     }
 
