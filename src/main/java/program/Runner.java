@@ -70,9 +70,6 @@ public class Runner {
         LogWriter.write(log);
 
         System.out.println("\nAll the output files are available in direcotry: " + Settings.getSetting("outputLogDir"));
-        if (Settings.getSetting("doAnalyze").equals("true")) {
-            System.out.println("Analysis is available in file: " + Settings.getSetting("outputAnalyzeFileName"));
-        }
         if (Settings.getSetting("replace").equals("true")) {
             System.out.println("Lines in merged log were replaced using rules: " + r.getDescriptionOfRules());
         }
