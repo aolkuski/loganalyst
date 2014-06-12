@@ -45,19 +45,19 @@ public class LogAnalyst {
     }
 
     public static void findPatternInTime(int[] hours, int peaks) {
-        int[] distance = new int[12];
-        for (int i = 0; i < 12; i++) {
+        int[] distance = new int[24];
+        for (int i = 0; i < 24; i++) {
             if (hours[i] > 0) {
-                for (int j = 0; j < 12; j++) {
-                    if (hours[i + j % 24] > 0) {
-                        distance[j]++;
+                for (int j = i + 1; j < 24; j++) {
+                    if (hours[j] > 0) {
+                        distance[j - i] += hours[j];
                     }
                 }
             }
         }
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 24; i++) {
             if (distance[i] * 2 > peaks) {
-                System.out.print("Problems happen each " + i + hours + "\n");
+                System.out.print("Problems happen each " + i + " hours\n");
             }
         }
     }
@@ -231,5 +231,6 @@ public class LogAnalyst {
 
     public static void writeAnalyze() throws IOException {
         BufferedWriter bw = prepareResources();
+
     }
 }
